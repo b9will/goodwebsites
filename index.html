@@ -1026,13 +1026,14 @@
 
         /* Services Tabs */
         .services-tabs {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 40px;
         }
 
         @media (min-width: 768px) {
             .services-tabs {
+                display: grid;
                 grid-template-columns: 1fr 1.2fr;
                 gap: 60px;
                 align-items: start;
@@ -1043,8 +1044,13 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            position: sticky;
-            top: 120px;
+        }
+
+        @media (min-width: 768px) {
+            .services-tabs-nav {
+                position: sticky;
+                top: 120px;
+            }
         }
 
         .services-tab-btn {
@@ -1061,6 +1067,13 @@
             text-align: left;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Hide tab buttons on mobile - show all content instead */
+        @media (max-width: 767px) {
+            .services-tabs-nav {
+                display: none;
+            }
         }
 
         .services-tab-btn::before {
@@ -1115,7 +1128,12 @@
 
         .services-tabs-content {
             position: relative;
-            min-height: 500px;
+        }
+
+        @media (min-width: 768px) {
+            .services-tabs-content {
+                min-height: 500px;
+            }
         }
 
         .services-tab-panel {
@@ -1125,6 +1143,22 @@
 
         .services-tab-panel.active {
             display: block;
+        }
+
+        /* On mobile, show all panels as cards */
+        @media (max-width: 767px) {
+            .services-tab-panel {
+                display: block;
+                background: var(--color-bg-elevated);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-lg);
+                padding: 32px;
+                margin-bottom: 16px;
+            }
+
+            .services-tab-panel:last-child {
+                margin-bottom: 0;
+            }
         }
 
         @keyframes fadeIn {
@@ -1963,18 +1997,11 @@
         }
 
         .faq-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 700px;
             margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .faq-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
         }
 
         .faq-item {
@@ -4025,4 +4052,3 @@
                             </svg>
                         </div>
                         <div class="chat-option-content">
-              
